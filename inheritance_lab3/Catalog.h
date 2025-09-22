@@ -5,7 +5,7 @@
 #include <string>
 
 class Catalog {
-protected:
+private:
     static const int MAX_CARDS = 1000;
     LibraryCard* cards_[MAX_CARDS];
     int cardCount_;
