@@ -1,6 +1,5 @@
 #include "LibraryCard.h"
-
-using namespace std;
+#include <cstring>
 
 LibraryCard::LibraryCard(const string& a, const string& t, const string& as, const string& in, const string& tc)
     : author(a), title(t), authorSign(as), inventoryNumber(in), thematicCode(tc) {}
@@ -43,9 +42,7 @@ IndependentPublicationCard* ArticleCard::getPublication() const { return publica
 ArticleCollectionCard::ArticleCollectionCard(const string& a, const string& t, const string& as, const string& in, const string& tc,
                                              const string& p, int y, int c, int pg)
     : IndependentPublicationCard(a, t, as, in, tc, p, y, c, pg), articleCount_(0) {
-    for (int i = 0; i < MAX_ARTICLES; ++i) {
-        articleCards_[i] = nullptr;
-    }
+    memset(articleCards_, 0, sizeof(articleCards_));
 }
 
 ArticleCollectionCard::~ArticleCollectionCard() {

@@ -1,38 +1,39 @@
 #ifndef INHERITANCE_LAB3_LIBRARYCARD_H
 #define INHERITANCE_LAB3_LIBRARYCARD_H
 
-#include "Article.h"
-#include <iostream>
 #include <string>
+#include "Article.h"
+
+using namespace std;
 
 class LibraryCard {
 protected:
-    std::string author;
-    std::string title;
-    std::string authorSign;
-    std::string inventoryNumber;
-    std::string thematicCode;
+    string author;
+    string title;
+    string authorSign;
+    string inventoryNumber;
+    string thematicCode;
 public:
-    LibraryCard(const std::string& a, const std::string& t, const std::string& as, const std::string& in, const std::string& tc);
-    std::string getAuthor() const;
-    std:: string getTitle() const;
-    std::string getAuthorSign() const;
-    std::string getInventoryNumber() const;
-    std::string getThematicCode() const;
-    std::string getAlphabeticalSearch() const;
+    LibraryCard(const string& a, const string& t, const string& as, const string& in, const string& tc);
+    string getAuthor() const;
+    string getTitle() const;
+    string getAuthorSign() const;
+    string getInventoryNumber() const;
+    string getThematicCode() const;
+    string getAlphabeticalSearch() const;
     virtual ~LibraryCard();
 };
 
 class IndependentPublicationCard : public LibraryCard {
 protected:
-    std::string publisher;
+    string publisher;
     int year;
     int circulation;
     int pages;
 public:
-    IndependentPublicationCard(const std::string& a, const std::string& t, const std::string& as, const std::string& in, const std::string& tc,
-                               const std::string& p, int y, int c, int pg);
-    std::string getPublisher() const;
+    IndependentPublicationCard(const string& a, const string& t, const string& as, const string& in, const string& tc,
+                               const string& p, int y, int c, int pg);
+    string getPublisher() const;
     int getYear() const;
     int getCirculation() const;
     int getPages() const;
@@ -43,7 +44,7 @@ private:
     Article article_;
     IndependentPublicationCard* publication_;
 public:
-    ArticleCard(const std::string& as, const std::string& in, const std::string& tc,
+    ArticleCard(const string& as, const string& in, const string& tc,
                 const Article& art, IndependentPublicationCard* pub);
     const Article& getArticle() const;
     IndependentPublicationCard* getPublication() const;
@@ -55,10 +56,10 @@ private:
     ArticleCard* articleCards_[MAX_ARTICLES];
     int articleCount_;
 public:
-    ArticleCollectionCard(const std::string& a, const std::string& t, const std::string& as, const std::string& in, const std::string& tc,
-                          const std::string& p, int y, int c, int pg);
+    ArticleCollectionCard(const string& a, const string& t, const string& as, const string& in, const string& tc,
+                          const string& p, int y, int c, int pg);
     ~ArticleCollectionCard();
-    void addArticle(const Article& art, const std::string& as, const std::string& in, const std::string& tc);
+    void addArticle(const Article& art, const string& as, const string& in, const string& tc);
     int getArticleCount() const;
     const ArticleCard* getArticleCard(int index) const;
 };
@@ -67,10 +68,11 @@ class BookCard : public IndependentPublicationCard {
 private:
     Article article_;
 public:
-    BookCard(const std::string& as, const std::string& in, const std::string& tc,
-             const std::string& p, int y, int c, int pg, const Article& art);
+    BookCard(const string& as, const string& in, const string& tc,
+             const string& p, int y, int c, int pg, const Article& art);
     const Article& getArticle() const;
 };
+
 
 
 #endif//INHERITANCE_LAB3_LIBRARYCARD_H

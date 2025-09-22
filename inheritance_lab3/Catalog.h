@@ -5,7 +5,7 @@
 #include <string>
 
 class Catalog {
-private:
+protected:
     static const int MAX_CARDS = 1000;
     LibraryCard* cards_[MAX_CARDS];
     int cardCount_;
@@ -19,12 +19,12 @@ public:
 
 class ThematicCatalog : public Catalog {
 public:
-    int search(const std::string& code, LibraryCard** results, int maxResults) const;
+    int search(const string& code, LibraryCard** results, int maxResults) const;
 };
 
 class AlphabeticalCatalog : public Catalog {
 public:
-    int search(const std::string& query, LibraryCard** results, int maxResults) const;
+    int search(const string& query, LibraryCard** results, int maxResults) const;
 };
 
 #endif//INHERITANCE_LAB3_CATALOG_H

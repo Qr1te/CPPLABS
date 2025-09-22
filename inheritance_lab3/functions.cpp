@@ -1,13 +1,13 @@
-#include "functions.h"
 #include <iostream>
 #include <string>
-
+#include <limits>
+#include "functions.h"
 
 using namespace std;
 
 void clearInputBuffer() {
     cin.clear();
-    cin.ignore(10000, '\n');
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
 void displayMenu() {
@@ -46,11 +46,20 @@ BookCard* createBookCard() {
     cout << "Enter publisher: ";
     getline(cin, publisher);
     cout << "Enter year of publication: ";
-    cin >> year;
+    if (!(cin >> year)) {
+        clearInputBuffer();
+        year = 0;
+    }
     cout << "Enter circulation: ";
-    cin >> circulation;
+    if (!(cin >> circulation)) {
+        clearInputBuffer();
+        circulation = 0;
+    }
     cout << "Enter number of pages: ";
-    cin >> pages;
+    if (!(cin >> pages)) {
+        clearInputBuffer();
+        pages = 0;
+    }
     Article* article = createArticle();
     BookCard* book = new BookCard(authorSign, inventoryNumber, thematicCode, publisher, year, circulation, pages, *article);
     delete article;
@@ -74,14 +83,26 @@ ArticleCollectionCard* createArticleCollectionCard() {
     cout << "Enter publisher: ";
     getline(cin, publisher);
     cout << "Enter year of publication: ";
-    cin >> year;
+    if (!(cin >> year)) {
+        clearInputBuffer();
+        year = 0;
+    }
     cout << "Enter circulation: ";
-    cin >> circulation;
+    if (!(cin >> circulation)) {
+        clearInputBuffer();
+        circulation = 0;
+    }
     cout << "Enter number of pages: ";
-    cin >> pages;
+    if (!(cin >> pages)) {
+        clearInputBuffer();
+        pages = 0;
+    }
     ArticleCollectionCard* collection = new ArticleCollectionCard(author, title, authorSign, inventoryNumber, thematicCode, publisher, year, circulation, pages);
     cout << "Enter number of articles to add: ";
-    cin >> numArticles;
+    if (!(cin >> numArticles)) {
+        clearInputBuffer();
+        numArticles = 0;
+    }
     for (int i = 0; i < numArticles; ++i) {
         cout << "\nArticle " << i + 1 << ":\n";
         string artAuthorSign, artInventoryNumber, artThematicCode;
@@ -110,7 +131,10 @@ void menu(ThematicCatalog& thematicCatalog, AlphabeticalCatalog& alphabeticalCat
     int choice;
     while (true) {
         displayMenu();
-        cin >> choice;
+        if (!(cin >> choice)) {
+            clearInputBuffer();
+            choice = 0;
+        }
         if (choice == 8) break;
 
         switch (choice) {
@@ -137,7 +161,10 @@ void menu(ThematicCatalog& thematicCatalog, AlphabeticalCatalog& alphabeticalCat
             case 4: {
                 cout << "Creating card for ThematicCatalog (1 for BookCard, 2 for ArticleCollectionCard): ";
                 int type;
-                cin >> type;
+                if (!(cin >> type)) {
+                    clearInputBuffer();
+                    type = 0;
+                }
                 LibraryCard* card = nullptr;
                 if (type == 1) {
                     card = createBookCard();
@@ -153,7 +180,10 @@ void menu(ThematicCatalog& thematicCatalog, AlphabeticalCatalog& alphabeticalCat
             case 5: {
                 cout << "Creating card for AlphabeticalCatalog (1 for BookCard, 2 for ArticleCollectionCard): ";
                 int type;
-                cin >> type;
+                if (!(cin >> type)) {
+                    clearInputBuffer();
+                    type = 0;
+                }
                 LibraryCard* card = nullptr;
                 if (type == 1) {
                     card = createBookCard();
@@ -198,5 +228,6 @@ void menu(ThematicCatalog& thematicCatalog, AlphabeticalCatalog& alphabeticalCat
             default:
                 cout << "Invalid choice. Try again.\n";
         }
+        clearInputBuffer();
     }
 }

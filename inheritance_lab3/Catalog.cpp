@@ -1,15 +1,18 @@
 #include "Catalog.h"
-
-using namespace std;
+#include <cstring>
 
 Catalog::Catalog() : cardCount_(0) {
-    for (int i = 0; i < MAX_CARDS; ++i) {
-        cards_[i] = nullptr;
+    memset(cards_, 0, sizeof(cards_));
+}
+
+Catalog::~Catalog() {
+    for (int i = 0; i < cardCount_; ++i) {
+        delete cards_[i];
     }
 }
 
 void Catalog::addCard(LibraryCard* card) {
-    if (cardCount_ < MAX_CARDS) {
+    if (cardCount_ < MAX_CARDS && card != nullptr) {
         cards_[cardCount_++] = card;
     }
 }
@@ -26,7 +29,7 @@ LibraryCard* Catalog::getCard(int index) const {
 int ThematicCatalog::search(const string& code, LibraryCard** results, int maxResults) const {
     int count = 0;
     for (int i = 0; i < cardCount_ && count < maxResults; ++i) {
-        if (cards_[i]->getThematicCode() == code) {
+        if (cards_[i] != nullptr && cards_[i]->getThematicCode() == code) {
             results[count++] = cards_[i];
         }
     }
@@ -36,15 +39,9 @@ int ThematicCatalog::search(const string& code, LibraryCard** results, int maxRe
 int AlphabeticalCatalog::search(const string& query, LibraryCard** results, int maxResults) const {
     int count = 0;
     for (int i = 0; i < cardCount_ && count < maxResults; ++i) {
-        if (cards_[i]->getAlphabeticalSearch() == query) {
+        if (cards_[i] != nullptr && cards_[i]->getAlphabeticalSearch() == query) {
             results[count++] = cards_[i];
         }
     }
     return count;
-}
-
-Catalog::~Catalog() {
-    for (int i = 0; i < cardCount_; ++i) {
-        delete cards_[i];
-    }
 }
