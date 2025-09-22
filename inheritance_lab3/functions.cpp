@@ -24,7 +24,8 @@ void displayMenu() {
 }
 
 Article* createArticle() {
-    string title, author;
+    string title;
+    string author;
     cout << "Enter article title: ";
     clearInputBuffer();
     getline(cin, title);
@@ -34,8 +35,13 @@ Article* createArticle() {
 }
 
 BookCard* createBookCard() {
-    string authorSign, inventoryNumber, thematicCode, publisher;
-    int year, circulation, pages;
+    string authorSign;
+    string inventoryNumber;
+    string thematicCode;
+    string publisher;
+    int year;
+    int circulation;
+    int pages;
     cout << "Enter author sign: ";
     clearInputBuffer();
     getline(cin, authorSign);
@@ -67,8 +73,16 @@ BookCard* createBookCard() {
 }
 
 ArticleCollectionCard* createArticleCollectionCard() {
-    string author, title, authorSign, inventoryNumber, thematicCode, publisher;
-    int year, circulation, pages, numArticles;
+    string author;
+    string title;
+    string authorSign;
+    string inventoryNumber;
+    string thematicCode;
+    string publisher;
+    int year;
+    int circulation;
+    int pages;
+    int numArticles;
     cout << "Enter collection author: ";
     clearInputBuffer();
     getline(cin, author);
