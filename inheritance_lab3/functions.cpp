@@ -7,7 +7,7 @@ using namespace std;
 
 void clearInputBuffer() {
     cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.ignore(10000, '\n');
 }
 
 void displayMenu() {
@@ -24,8 +24,7 @@ void displayMenu() {
 }
 
 Article* createArticle() {
-    string title;
-    string author;
+    string title, author;
     cout << "Enter article title: ";
     clearInputBuffer();
     getline(cin, title);
@@ -35,13 +34,8 @@ Article* createArticle() {
 }
 
 BookCard* createBookCard() {
-    string authorSign;
-    string inventoryNumber;
-    string thematicCode;
-    string publisher;
-    int year;
-    int circulation;
-    int pages;
+    string authorSign, inventoryNumber, thematicCode, publisher;
+    int year, circulation, pages;
     cout << "Enter author sign: ";
     clearInputBuffer();
     getline(cin, authorSign);
@@ -52,20 +46,11 @@ BookCard* createBookCard() {
     cout << "Enter publisher: ";
     getline(cin, publisher);
     cout << "Enter year of publication: ";
-    if (!(cin >> year)) {
-        clearInputBuffer();
-        year = 0;
-    }
+    cin >> year;
     cout << "Enter circulation: ";
-    if (!(cin >> circulation)) {
-        clearInputBuffer();
-        circulation = 0;
-    }
+    cin >> circulation;
     cout << "Enter number of pages: ";
-    if (!(cin >> pages)) {
-        clearInputBuffer();
-        pages = 0;
-    }
+    cin >> pages;
     Article* article = createArticle();
     BookCard* book = new BookCard(authorSign, inventoryNumber, thematicCode, publisher, year, circulation, pages, *article);
     delete article;
@@ -73,16 +58,8 @@ BookCard* createBookCard() {
 }
 
 ArticleCollectionCard* createArticleCollectionCard() {
-    string author;
-    string title;
-    string authorSign;
-    string inventoryNumber;
-    string thematicCode;
-    string publisher;
-    int year;
-    int circulation;
-    int pages;
-    int numArticles;
+    string author, title, authorSign, inventoryNumber, thematicCode, publisher;
+    int year, circulation, pages, numArticles;
     cout << "Enter collection author: ";
     clearInputBuffer();
     getline(cin, author);
@@ -97,26 +74,14 @@ ArticleCollectionCard* createArticleCollectionCard() {
     cout << "Enter publisher: ";
     getline(cin, publisher);
     cout << "Enter year of publication: ";
-    if (!(cin >> year)) {
-        clearInputBuffer();
-        year = 0;
-    }
+    cin >> year;
     cout << "Enter circulation: ";
-    if (!(cin >> circulation)) {
-        clearInputBuffer();
-        circulation = 0;
-    }
+    cin >> circulation;
     cout << "Enter number of pages: ";
-    if (!(cin >> pages)) {
-        clearInputBuffer();
-        pages = 0;
-    }
+    cin >> pages;
     ArticleCollectionCard* collection = new ArticleCollectionCard(author, title, authorSign, inventoryNumber, thematicCode, publisher, year, circulation, pages);
     cout << "Enter number of articles to add: ";
-    if (!(cin >> numArticles)) {
-        clearInputBuffer();
-        numArticles = 0;
-    }
+    cin >> numArticles;
     for (int i = 0; i < numArticles; ++i) {
         cout << "\nArticle " << i + 1 << ":\n";
         string artAuthorSign, artInventoryNumber, artThematicCode;
@@ -145,10 +110,7 @@ void menu(ThematicCatalog& thematicCatalog, AlphabeticalCatalog& alphabeticalCat
     int choice;
     while (true) {
         displayMenu();
-        if (!(cin >> choice)) {
-            clearInputBuffer();
-            choice = 0;
-        }
+        cin >> choice;
         if (choice == 8) break;
 
         switch (choice) {
@@ -175,10 +137,7 @@ void menu(ThematicCatalog& thematicCatalog, AlphabeticalCatalog& alphabeticalCat
             case 4: {
                 cout << "Creating card for ThematicCatalog (1 for BookCard, 2 for ArticleCollectionCard): ";
                 int type;
-                if (!(cin >> type)) {
-                    clearInputBuffer();
-                    type = 0;
-                }
+                cin >> type;
                 LibraryCard* card = nullptr;
                 if (type == 1) {
                     card = createBookCard();
@@ -194,10 +153,7 @@ void menu(ThematicCatalog& thematicCatalog, AlphabeticalCatalog& alphabeticalCat
             case 5: {
                 cout << "Creating card for AlphabeticalCatalog (1 for BookCard, 2 for ArticleCollectionCard): ";
                 int type;
-                if (!(cin >> type)) {
-                    clearInputBuffer();
-                    type = 0;
-                }
+                cin >> type;
                 LibraryCard* card = nullptr;
                 if (type == 1) {
                     card = createBookCard();
@@ -242,6 +198,5 @@ void menu(ThematicCatalog& thematicCatalog, AlphabeticalCatalog& alphabeticalCat
             default:
                 cout << "Invalid choice. Try again.\n";
         }
-        clearInputBuffer();
     }
 }
