@@ -5,7 +5,7 @@
 #include "Article.h"
 
 class LibraryCard {
-protected:
+private:
     std::string author;
     std::string title;
     std::string authorSign;
@@ -52,7 +52,7 @@ class ArticleCollectionCard : public IndependentPublicationCard {
 private:
     static const int MAX_ARTICLES = 100;
     ArticleCard* articleCards_[MAX_ARTICLES];
-    int articleCount_;
+    int articleCount_ = 0;
 public:
     ArticleCollectionCard(const std::string& a, const std::string& t, const std::string& as, const std::string& in, const std::string& tc,
                           const std::string& p, int y, int c, int pg);

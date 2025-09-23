@@ -12,6 +12,8 @@ protected:
 public:
     Catalog();
     ~Catalog();
+    Catalog(const Catalog& other);
+    Catalog& operator=(const Catalog& other);
     void addCard(LibraryCard* card);
     int getCardCount() const;
     LibraryCard* getCard(int index) const;

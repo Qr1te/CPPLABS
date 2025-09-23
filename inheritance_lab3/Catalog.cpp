@@ -11,6 +11,39 @@ Catalog::~Catalog() {
     }
 }
 
+Catalog::Catalog(const Catalog& other) : cardCount_(other.cardCount_) {
+    for (int i = 0; i < cardCount_; ++i) {
+        if (other.cards_[i]) {
+            cards_[i] = new LibraryCard(*other.cards_[i]);
+        } else {
+            cards_[i] = nullptr;
+        }
+    }
+    for (int i = cardCount_; i < MAX_CARDS; ++i) {
+        cards_[i] = nullptr;
+    }
+}
+
+Catalog &Catalog::operator=(const Catalog& other) {
+    if (this != &other) {
+        for (int i = 0; i < cardCount_; ++i) {
+            delete cards_[i];
+        }
+        cardCount_ = other.cardCount_;
+        for (int i = 0; i < cardCount_; ++i) {
+            if (other.cards_[i]) {
+                cards_[i] = new LibraryCard(*other.cards_[i]);
+            } else {
+                cards_[i] = nullptr;
+            }
+        }
+        for (int i = cardCount_; i < MAX_CARDS; ++i) {
+            cards_[i] = nullptr;
+        }
+    }
+    return *this;
+}
+
 void Catalog::addCard(LibraryCard* card) {
     if (cardCount_ < MAX_CARDS && card != nullptr) {
         cards_[cardCount_++] = card;

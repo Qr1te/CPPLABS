@@ -43,7 +43,7 @@ IndependentPublicationCard* ArticleCard::getPublication() const { return publica
 
 ArticleCollectionCard::ArticleCollectionCard(const string& a, const string& t, const string& as, const string& in, const string& tc,
                                              const string& p, int y, int c, int pg)
-    : IndependentPublicationCard(a, t, as, in, tc, p, y, c, pg), articleCount_(0) {
+    : IndependentPublicationCard(a, t, as, in, tc, p, y, c, pg){
     memset(articleCards_, 0, sizeof(articleCards_));
 }
 
