@@ -21,7 +21,7 @@ public:
     string getInventoryNumber() const;
     string getThematicCode() const;
     string getAlphabeticalSearch() const;
-    virtual ~LibraryCard();
+    virtual ~LibraryCard() ;
 };
 
 class IndependentPublicationCard : public LibraryCard {
@@ -58,7 +58,7 @@ private:
 public:
     ArticleCollectionCard(const string& a, const string& t, const string& as, const string& in, const string& tc,
                           const string& p, int y, int c, int pg);
-    ~ArticleCollectionCard();
+    ~ArticleCollectionCard() final;
     void addArticle(const Article& art, const string& as, const string& in, const string& tc);
     int getArticleCount() const;
     const ArticleCard* getArticleCard(int index) const;

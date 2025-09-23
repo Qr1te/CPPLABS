@@ -26,7 +26,7 @@ LibraryCard* Catalog::getCard(int index) const {
     return nullptr;
 }
 
-int ThematicCatalog::search(const string& code, LibraryCard** results, int maxResults) const {
+int ThematicCatalog::search(const string_view & code, LibraryCard** results, int maxResults) const {
     int count = 0;
     for (int i = 0; i < cardCount_ && count < maxResults; ++i) {
         if (cards_[i] != nullptr && cards_[i]->getThematicCode() == code) {
@@ -36,7 +36,7 @@ int ThematicCatalog::search(const string& code, LibraryCard** results, int maxRe
     return count;
 }
 
-int AlphabeticalCatalog::search(const string& query, LibraryCard** results, int maxResults) const {
+int AlphabeticalCatalog::search(const string_view & query, LibraryCard** results, int maxResults) const {
     int count = 0;
     for (int i = 0; i < cardCount_ && count < maxResults; ++i) {
         if (cards_[i] != nullptr && cards_[i]->getAlphabeticalSearch() == query) {

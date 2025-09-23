@@ -16,7 +16,7 @@ string LibraryCard::getThematicCode() const { return thematicCode; }
 
 string LibraryCard::getAlphabeticalSearch() const { return author + title; }
 
-LibraryCard::~LibraryCard() {}
+LibraryCard::~LibraryCard() = default;
 
 IndependentPublicationCard::IndependentPublicationCard(const string& a, const string& t, const string& as, const string& in, const string& tc,
                                                        const string& p, int y, int c, int pg)

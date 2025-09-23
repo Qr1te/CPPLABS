@@ -3,18 +3,14 @@
 
 #include <string>
 
-#include <string>
-
-using namespace std;
-
 class Article {
 private:
-    string title;
-    string author;
+    std::string title;
+    std::string author;
 public:
-    Article(const string& t, const string& a);
-    string getTitle() const;
-    string getAuthor() const;
+    Article(const std::string& t, const std::string& a);
+    std::string getTitle() const;
+    std::string getAuthor() const;
 };
 
 #endif//INHERITANCE_LAB3_ARTICLE_H
