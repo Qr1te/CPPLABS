@@ -1,6 +1,8 @@
 #include "LibraryCard.h"
 #include <cstring>
 
+using namespace std;
+
 LibraryCard::LibraryCard(const string& a, const string& t, const string& as, const string& in, const string& tc)
     : author(a), title(t), authorSign(as), inventoryNumber(in), thematicCode(tc) {}
 

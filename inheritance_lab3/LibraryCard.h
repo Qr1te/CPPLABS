@@ -23,7 +23,7 @@ public:
 };
 
 class IndependentPublicationCard : public LibraryCard {
-protected:
+private:
     std::string publisher;
     int year;
     int circulation;

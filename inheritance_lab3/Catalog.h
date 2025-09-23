@@ -19,12 +19,12 @@ public:
 
 class ThematicCatalog : public Catalog {
 public:
-    int search(const string_view & code, LibraryCard** results, int maxResults) const;
+    int search(const std::string_view & code, LibraryCard** results, int maxResults) const;
 };
 
 class AlphabeticalCatalog : public Catalog {
 public:
-    int search(const string_view & query, LibraryCard** results, int maxResults) const;
+    int search(const std::string_view & query, LibraryCard** results, int maxResults) const;
 };
 
 #endif//INHERITANCE_LAB3_CATALOG_H

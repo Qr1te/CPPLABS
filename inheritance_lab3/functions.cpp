@@ -98,7 +98,9 @@ ArticleCollectionCard* createArticleCollectionCard() {
     cin >> numArticles;
     for (int i = 0; i < numArticles; ++i) {
         cout << "\nArticle " << i + 1 << ":\n";
-        string artAuthorSign, artInventoryNumber, artThematicCode;
+        string artAuthorSign;
+        string artInventoryNumber;
+        string artThematicCode;
         cout << "Enter article author sign: ";
         clearInputBuffer();
         getline(cin, artAuthorSign);
