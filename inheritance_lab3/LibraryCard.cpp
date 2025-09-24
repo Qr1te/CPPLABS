@@ -47,7 +47,7 @@ ArticleCollectionCard::ArticleCollectionCard(const string& a, const string& t, c
     memset(articleCards_, 0, sizeof(articleCards_));
 }
 
-ArticleCollectionCard::ArticleCollectionCard(const ArticleCollectionCard &other): IndependentPublicationCard(other),articleCount_(0) {
+ArticleCollectionCard::ArticleCollectionCard(const ArticleCollectionCard &other): IndependentPublicationCard(other){
     for (int i = 0; i < articleCount_; ++i) {
         articleCards_[i] = new ArticleCard(*other.articleCards_[i]);
     }
