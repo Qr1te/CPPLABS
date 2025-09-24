@@ -27,7 +27,6 @@ Article* createArticle() {
     string title;
     string author;
     cout << "Enter article title: ";
-    clearInputBuffer();
     getline(cin, title);
     cout << "Enter article author: ";
     getline(cin, author);
@@ -39,9 +38,6 @@ BookCard* createBookCard() {
     string inventoryNumber;
     string thematicCode;
     string publisher;
-    int year;
-    int circulation;
-    int pages;
     cout << "Enter author sign: ";
     clearInputBuffer();
     getline(cin, authorSign);
@@ -49,16 +45,8 @@ BookCard* createBookCard() {
     getline(cin, inventoryNumber);
     cout << "Enter thematic code: ";
     getline(cin, thematicCode);
-    cout << "Enter publisher: ";
-    getline(cin, publisher);
-    cout << "Enter year of publication: ";
-    cin >> year;
-    cout << "Enter circulation: ";
-    cin >> circulation;
-    cout << "Enter number of pages: ";
-    cin >> pages;
     Article* article = createArticle();
-    auto book = new BookCard(authorSign, inventoryNumber, thematicCode, publisher, year, circulation, pages, *article);
+    auto book = new BookCard(authorSign, inventoryNumber, thematicCode, *article);
     delete article;
     return book;
 }
@@ -70,9 +58,6 @@ ArticleCollectionCard* createArticleCollectionCard() {
     string inventoryNumber;
     string thematicCode;
     string publisher;
-    int year;
-    int circulation;
-    int pages;
     int numArticles;
     cout << "Enter collection author: ";
     clearInputBuffer();
@@ -85,15 +70,7 @@ ArticleCollectionCard* createArticleCollectionCard() {
     getline(cin, inventoryNumber);
     cout << "Enter thematic code: ";
     getline(cin, thematicCode);
-    cout << "Enter publisher: ";
-    getline(cin, publisher);
-    cout << "Enter year of publication: ";
-    cin >> year;
-    cout << "Enter circulation: ";
-    cin >> circulation;
-    cout << "Enter number of pages: ";
-    cin >> pages;
-    auto collection = new ArticleCollectionCard(author, title, authorSign, inventoryNumber, thematicCode, publisher, year, circulation, pages);
+    auto collection = new ArticleCollectionCard(author, title, authorSign, inventoryNumber, thematicCode);
     cout << "Enter number of articles to add: ";
     cin >> numArticles;
     for (int i = 0; i < numArticles; ++i) {

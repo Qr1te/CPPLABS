@@ -20,17 +20,15 @@ string LibraryCard::getAlphabeticalSearch() const { return author + title; }
 
 LibraryCard::~LibraryCard() = default;
 
-IndependentPublicationCard::IndependentPublicationCard(const string& a, const string& t, const string& as, const string& in, const string& tc,
-                                                       const string& p, int y, int c, int pg)
-    : LibraryCard(a, t, as, in, tc), publisher(p), year(y), circulation(c), pages(pg) {}
+IndependentPublicationCard::IndependentPublicationCard(const string& a, const string& t, const string& as, const string& in, const string& tc): LibraryCard(a, t, as, in, tc) {}
 
-string IndependentPublicationCard::getPublisher() const { return publisher; }
+string IndependentPublicationCard::getPublisher() const { return "Publisher: Book"; }
 
-int IndependentPublicationCard::getYear() const { return year; }
+string IndependentPublicationCard::getYear() const { return "Year: 2025"; }
 
-int IndependentPublicationCard::getCirculation() const { return circulation; }
+string IndependentPublicationCard::getCirculation() const { return "Circulation: 12"; }
 
-int IndependentPublicationCard::getPages() const { return pages; }
+string IndependentPublicationCard::getPages() const { return "Pages: 200"; }
 
 ArticleCard::ArticleCard(const string& as, const string& in, const string& tc,
                          const Article& art, IndependentPublicationCard* pub)
@@ -41,9 +39,8 @@ const Article& ArticleCard::getArticle() const { return article_; }
 
 IndependentPublicationCard* ArticleCard::getPublication() const { return publication_; }
 
-ArticleCollectionCard::ArticleCollectionCard(const string& a, const string& t, const string& as, const string& in, const string& tc,
-                                             const string& p, int y, int c, int pg)
-    : IndependentPublicationCard(a, t, as, in, tc, p, y, c, pg){
+ArticleCollectionCard::ArticleCollectionCard(const string& a, const string& t, const string& as, const string& in, const string& tc)
+    : IndependentPublicationCard(a, t, as, in, tc){
     memset(articleCards_, 0, sizeof(articleCards_));
 }
 
@@ -88,8 +85,7 @@ const ArticleCard* ArticleCollectionCard::getArticleCard(int index) const {
     return nullptr;
 }
 
-BookCard::BookCard(const string& as, const string& in, const string& tc,
-                   const string& p, int y, int c, int pg, const Article& art)
-    : IndependentPublicationCard(art.getAuthor(), art.getTitle(), as, in, tc, p, y, c, pg), article_(art) {}
+BookCard::BookCard(const string& as, const string& in, const string& tc,const Article& art)
+    : IndependentPublicationCard(art.getAuthor(), art.getTitle(), as, in, tc), article_(art) {}
 
 const Article& BookCard::getArticle() const { return article_; }

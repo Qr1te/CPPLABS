@@ -19,7 +19,7 @@ Catalog::Catalog(const Catalog& other) : cardCount_(other.cardCount_) {
             cards_[i] = nullptr;
         }
     }
-    for (int i = cardCount_; i < MAX_CARDS; ++i) {
+    for (int i = cardCount_; i < 100; ++i) {
         cards_[i] = nullptr;
     }
 }
@@ -37,7 +37,7 @@ Catalog &Catalog::operator=(const Catalog& other) {
                 cards_[i] = nullptr;
             }
         }
-        for (int i = cardCount_; i < MAX_CARDS; ++i) {
+        for (int i = cardCount_; i < 100; ++i) {
             cards_[i] = nullptr;
         }
     }
@@ -45,7 +45,7 @@ Catalog &Catalog::operator=(const Catalog& other) {
 }
 
 void Catalog::addCard(LibraryCard* card) {
-    if (cardCount_ < MAX_CARDS && card != nullptr) {
+    if (cardCount_ < 100 && card != nullptr) {
         cards_[cardCount_++] = card;
     }
 }
@@ -61,6 +61,7 @@ LibraryCard* Catalog::getCard(int index) const {
 
 int ThematicCatalog::search(const std::string_view & code, LibraryCard** results, int maxResults) const {
     int count = 0;
+    ThematicCatalog tc;
     for (int i = 0; i < cardCount_ && count < maxResults; ++i) {
         if (cards_[i] != nullptr && cards_[i]->getThematicCode() == code) {
             results[count++] = cards_[i];

@@ -23,18 +23,12 @@ public:
 };
 
 class IndependentPublicationCard : public LibraryCard {
-private:
-    std::string publisher;
-    int year;
-    int circulation;
-    int pages;
 public:
-    IndependentPublicationCard(const std::string& a, const std::string& t, const std::string& as, const std::string& in, const std::string& tc,
-                               const std::string& p, int y, int c, int pg);
+    IndependentPublicationCard(const std::string& a, const std::string& t, const std::string& as, const std::string& in, const std::string& tc);
     std::string getPublisher() const;
-    int getYear() const;
-    int getCirculation() const;
-    int getPages() const;
+    std::string getYear() const;
+    std::string getCirculation() const;
+    std::string getPages() const;
 };
 
 class ArticleCard : public LibraryCard {
@@ -54,8 +48,7 @@ private:
     ArticleCard* articleCards_[MAX_ARTICLES];
     int articleCount_ = 0;
 public:
-    ArticleCollectionCard(const std::string& a, const std::string& t, const std::string& as, const std::string& in, const std::string& tc,
-                          const std::string& p, int y, int c, int pg);
+    ArticleCollectionCard(const std::string& a, const std::string& t, const std::string& as, const std::string& in, const std::string& tc);
     ArticleCollectionCard(const ArticleCollectionCard& other);
     ArticleCollectionCard& operator=(const ArticleCollectionCard& other);
     ~ArticleCollectionCard() override;
@@ -68,8 +61,7 @@ class BookCard : public IndependentPublicationCard {
 private:
     Article article_;
 public:
-    BookCard(const std::string& as, const std::string& in, const std::string& tc,
-             const std::string& p, int y, int c, int pg, const Article& art);
+    BookCard(const std::string& as, const std::string& in, const std::string& tc,const Article& art);
     const Article& getArticle() const;
 };
 
