@@ -47,6 +47,26 @@ ArticleCollectionCard::ArticleCollectionCard(const string& a, const string& t, c
     memset(articleCards_, 0, sizeof(articleCards_));
 }
 
+ArticleCollectionCard::ArticleCollectionCard(const ArticleCollectionCard &other): IndependentPublicationCard(other),articleCount_(0) {
+    for (int i = 0; i < articleCount_; ++i) {
+        articleCards_[i] = new ArticleCard(*other.articleCards_[i]);
+    }
+}
+
+ArticleCollectionCard &ArticleCollectionCard:: operator=(const ArticleCollectionCard& other) {
+    if (this != &other) {
+        IndependentPublicationCard::operator=(other);
+        for (int i = 0; i < articleCount_; ++i) {
+            delete articleCards_[i];
+        }
+        articleCount_ = other.articleCount_;
+        for (int i = 0; i < articleCount_; ++i) {
+            articleCards_[i] = new ArticleCard(*other.articleCards_[i]);
+        }
+    }
+    return *this;
+}
+
 ArticleCollectionCard::~ArticleCollectionCard() {
     for (int i = 0; i < articleCount_; ++i) {
         delete articleCards_[i];

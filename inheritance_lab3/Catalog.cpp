@@ -1,7 +1,7 @@
 #include "Catalog.h"
 #include <cstring>
 
-Catalog::Catalog() : cardCount_(0) {
+Catalog::Catalog(){
     memset(cards_, 0, sizeof(cards_));
 }
 

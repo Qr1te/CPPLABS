@@ -56,7 +56,9 @@ private:
 public:
     ArticleCollectionCard(const std::string& a, const std::string& t, const std::string& as, const std::string& in, const std::string& tc,
                           const std::string& p, int y, int c, int pg);
-    ~ArticleCollectionCard() final;
+    ArticleCollectionCard(const ArticleCollectionCard& other);
+    ArticleCollectionCard& operator=(const ArticleCollectionCard& other);
+    ~ArticleCollectionCard() override;
     void addArticle(const Article& art, const std::string& as, const std::string& in, const std::string& tc);
     int getArticleCount() const;
     const ArticleCard* getArticleCard(int index) const;

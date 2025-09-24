@@ -8,7 +8,7 @@ class Catalog {
 protected:
     static const int MAX_CARDS = 1000;
     LibraryCard* cards_[MAX_CARDS];
-    int cardCount_;
+    int cardCount_ = 0;
 public:
     Catalog();
     ~Catalog();
