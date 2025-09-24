@@ -1,7 +1,7 @@
+#include "../includes/functions.h"
 #include <iostream>
-#include <string>
 #include <limits>
-#include "functions.h"
+#include <string>
 
 using namespace std;
 

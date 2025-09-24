@@ -3,13 +3,13 @@ project(inheritance_lab3)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(inheritance_lab3 main.cpp
-        Article.cpp
-        Article.h
-        LibraryCard.cpp
-        LibraryCard.h
-        Catalog.cpp
-        Catalog.h
-        functions.cpp
-        functions.h
+add_executable(inheritance_lab3 src/main.cpp
+        src/Article.cpp
+        includes/Article.h
+        src/LibraryCard.cpp
+        includes/LibraryCard.h
+        src/Catalog.cpp
+        includes/Catalog.h
+        src/functions.cpp
+        includes/functions.h
 )

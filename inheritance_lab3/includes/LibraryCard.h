@@ -1,8 +1,8 @@
 #ifndef INHERITANCE_LAB3_LIBRARYCARD_H
 #define INHERITANCE_LAB3_LIBRARYCARD_H
 
-#include <string>
 #include "Article.h"
+#include <string>
 
 class LibraryCard {
 private:

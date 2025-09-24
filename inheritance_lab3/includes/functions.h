@@ -2,8 +2,8 @@
 #define INHERITANCE_LAB3_FUNCTIONS_H
 
 #include "Article.h"
-#include "LibraryCard.h"
 #include "Catalog.h"
+#include "LibraryCard.h"
 
 void clearInputBuffer();
 void displayMenu();

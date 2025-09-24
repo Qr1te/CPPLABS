@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "../includes/functions.h"
 
 int main() {
     ThematicCatalog catalog1;
