@@ -4,10 +4,10 @@
 #include "../includes/TwoDShape.h"
 
 class Square: public TwoDShape{
-protected:
+private:
     double side;
 public:
-    Square(double squareSide);
+    explicit Square(double squareSide);
     void print() override;
     double area() override;
     double volume() override;

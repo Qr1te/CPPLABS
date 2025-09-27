@@ -4,7 +4,7 @@
 #include "../includes/TwoDShape.h"
 
 class Circle: public TwoDShape{
-protected:
+private:
     double radius;
 public:
     explicit Circle(double circleRadius);

@@ -1,3 +1,3 @@
 #include "../includes/Shape.h"
 
-Shape::~Shape() {}
+Shape::~Shape() = default;
