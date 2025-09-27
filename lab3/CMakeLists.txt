@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.29)
-project(inheritance_lab3)
+project(lab3)
 
 set(CMAKE_CXX_STANDARD 20)
 
