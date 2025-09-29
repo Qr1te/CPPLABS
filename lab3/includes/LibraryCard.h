@@ -38,7 +38,7 @@ private:
 public:
     ArticleCard(const std::string& as, const std::string& in, const std::string& tc,
                 const Article& art, IndependentPublicationCard* pub);
-    const Article& getArticle() const;
+    [[maybe_unused]] const Article& getArticle() const;
     IndependentPublicationCard* getPublication() const;
 };
 

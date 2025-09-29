@@ -5,9 +5,14 @@
 #include <string>
 
 class Catalog {
-protected:
+private:
     LibraryCard* cards_[100];
     int cardCount_ = 0;
+
+protected:
+    LibraryCard** getCards() { return cards_; }
+    int getCardCountInternal() const { return cardCount_; }
+
 public:
     Catalog();
     ~Catalog();

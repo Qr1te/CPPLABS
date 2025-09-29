@@ -35,7 +35,7 @@ ArticleCard::ArticleCard(const string& as, const string& in, const string& tc,
     : LibraryCard(art.getAuthor(), art.getTitle(), as, in, tc),
       article_(art), publication_(pub) {}
 
-const Article& ArticleCard::getArticle() const { return article_; }
+[[maybe_unused]] const Article& ArticleCard::getArticle() const { return article_; }
 
 IndependentPublicationCard* ArticleCard::getPublication() const { return publication_; }
 
