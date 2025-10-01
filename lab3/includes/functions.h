@@ -4,6 +4,10 @@
 #include "Article.h"
 #include "Catalog.h"
 #include "LibraryCard.h"
+#include "BookCard.h"
+#include "ArticleCollectionCard.h"
+#include "ThematicCatalog.h"
+#include "AlphabeticalCatalog.h"
 
 void clearInputBuffer();
 void displayMenu();
