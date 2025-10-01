@@ -18,8 +18,8 @@ double Square::volume() {
 
 void Square::draw() {
     std::cout << "Drawing a square " << side << "x" << side << std::endl;
-    int w_int = static_cast<int>(side);
-    int h_int = static_cast<int>(side);
+    auto w_int = static_cast<int>(side);
+    auto h_int = static_cast<int>(side);
 
     for (int i = 0; i < h_int; i++) {
         for (int j = 0; j < w_int; j++) {
