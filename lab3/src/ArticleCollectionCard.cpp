@@ -40,3 +40,7 @@ const ArticleCard* ArticleCollectionCard::getArticleCard(int index) const {
     }
     return nullptr;
 }
+
+ArticleCollectionCard::~ArticleCollectionCard() {
+    articleCards.clear();
+}
