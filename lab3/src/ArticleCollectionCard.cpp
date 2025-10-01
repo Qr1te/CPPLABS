@@ -24,8 +24,6 @@ ArticleCollectionCard &ArticleCollectionCard::operator=(const ArticleCollectionC
     return *this;
 }
 
-ArticleCollectionCard::~ArticleCollectionCard() = default;  // деструктор не нужен!
-
 void ArticleCollectionCard::addArticle(const Article& art, const string& as, const string& in, const string& tc) {
     if (articleCards.size() < MAX_ARTICLES) {
         articleCards.push_back(make_unique<ArticleCard>(as, in, tc, art, this));
