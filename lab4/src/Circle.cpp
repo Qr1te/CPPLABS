@@ -17,6 +17,20 @@ double Circle::volume() {
 }
 
 void Circle::draw() {
-    std::cout <<"";
+    std::cout << "Circle with radius " << radius << ":\n";
+
+    for (int y = -radius; y <= radius; y++) {
+        for (int x = -radius; x <= radius; x++) {
+
+            if (x*x + y*y <= radius*radius + radius*0.5) {
+                std::cout << "* ";
+            } else {
+                std::cout << "  ";
+            }
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
 }
+
 

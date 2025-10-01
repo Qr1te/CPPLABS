@@ -2,6 +2,8 @@
 #define LAB4_SPHERE_H
 
 #include "ThreeDShape.h"
+#include <vector>
+#include <cmath>
 
 class Sphere: public ThreeDShape {
 private:

@@ -16,5 +16,21 @@ double Sphere::volume() {
 }
 
 void Sphere::draw() {
-    std::cout <<"";
+    std::cout << "Sphere with radius " << radius << ":\n";
+
+    for (int y = -radius; y <= radius; y++) {
+        for (int x = -radius; x <= radius; x++) {
+            float distance = std::sqrt(x*x + y*y);
+
+            if (distance < radius - 1) {
+                std::cout << "* ";
+            } else if (distance < radius + 0.5) {
+                std::cout << "@ ";
+            } else {
+                std::cout << "  ";
+            }
+        }
+        std:: cout << std::endl;
+    }
+    std::cout << std::endl;
 }

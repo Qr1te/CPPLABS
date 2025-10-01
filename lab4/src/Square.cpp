@@ -17,5 +17,17 @@ double Square::volume() {
 }
 
 void Square::draw() {
-    std::cout <<"";
+    std::cout << "Drawing a square " << side << "x" << side << std::endl;
+    int w_int = static_cast<int>(side);
+    int h_int = static_cast<int>(side);
+
+    for (int i = 0; i < h_int; i++) {
+        for (int j = 0; j < w_int; j++) {
+            if (i == 0 || i == h_int-1 || j == 0 || j == w_int-1)
+                std::cout << "* ";
+            else
+                std::cout << "  ";
+        }
+        std::cout << std::endl;
+    }
 }

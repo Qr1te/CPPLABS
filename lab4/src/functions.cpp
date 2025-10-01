@@ -32,6 +32,7 @@ void menu(){
                 figureArea = shapes->area();
                 std::cout << "Area: " << figureArea << std::endl;
                 shapes->volume();
+                shapes->draw();
                 break;
             case 2:
                 std::cout << "Enter side: ";
@@ -41,6 +42,7 @@ void menu(){
                 figureArea = shapes->area();
                 std::cout << "Area: " << figureArea << std::endl;
                 shapes->volume();
+                shapes->draw();
                 break;
             case 3:
                 std::cout << "Enter radius: ";
@@ -51,6 +53,7 @@ void menu(){
                 std::cout << "Area: " << figureArea << std::endl;
                 figureVolume = shapes->volume();
                 std::cout << "Volume: " << figureVolume << std::endl;
+                shapes->draw();
                 break;
             case 4:
                 std::cout << "Enter side: ";
@@ -61,6 +64,7 @@ void menu(){
                 std::cout << "Area: " << figureArea << std::endl;
                 figureVolume = shapes->volume();
                 std::cout << "Volume: " << figureVolume << std::endl;
+                shapes->draw();
                 break;
             default:
                 std::cout << "Invalid choice!\n";
