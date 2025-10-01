@@ -3,15 +3,17 @@
 
 #include "LibraryCard.h"
 #include <string>
+#include <vector>
+#include <memory>
 
 class Catalog {
 private:
-    LibraryCard* cards_[100];
-    int cardCount_ = 0;
+    std::vector<std::unique_ptr<LibraryCard>> cards_;
 
 protected:
-    LibraryCard** getCards() { return cards_; }
-    int getCardCountInternal() const { return cardCount_; }
+    std::vector<std::unique_ptr<LibraryCard>>& getCards() { return cards_; }
+    const std::vector<std::unique_ptr<LibraryCard>>& getCards() const { return cards_; }
+    int getCardCountInternal() const { return cards_.size(); }
 
 public:
     Catalog();

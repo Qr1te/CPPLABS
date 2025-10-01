@@ -1,63 +1,47 @@
 #include "../includes/Catalog.h"
 #include <cstring>
 
-Catalog::Catalog(){
-    memset(cards_, 0, sizeof(cards_));
-}
+Catalog::Catalog() = default;
 
 Catalog::~Catalog() {
-    for (int i = 0; i < cardCount_; ++i) {
-        delete cards_[i];
-    }
+    cards_.clear();
 }
 
-Catalog::Catalog(const Catalog& other) : cardCount_(other.cardCount_) {
-    for (int i = 0; i < cardCount_; ++i) {
-        if (other.cards_[i]) {
-            cards_[i] = new LibraryCard(*other.cards_[i]);
-        } else {
-            cards_[i] = nullptr;
+Catalog::Catalog(const Catalog& other) {
+    for (const auto& card : other.cards_) {
+        if (card) {
+            cards_.push_back(std::make_unique<LibraryCard>(*card));
         }
     }
-    for (int i = cardCount_; i < 100; ++i) {
-        cards_[i] = nullptr;
-    }
 }
 
-Catalog &Catalog::operator=(const Catalog& other) {
+Catalog& Catalog::operator=(const Catalog& other) {
     if (this != &other) {
-        for (int i = 0; i < cardCount_; ++i) {
-            delete cards_[i];
-        }
-        cardCount_ = other.cardCount_;
-        for (int i = 0; i < cardCount_; ++i) {
-            if (other.cards_[i]) {
-                cards_[i] = new LibraryCard(*other.cards_[i]);
-            } else {
-                cards_[i] = nullptr;
+        cards_.clear();
+        for (const auto& card : other.cards_) {
+            if (card) {
+                cards_.push_back(std::make_unique<LibraryCard>(*card));
             }
-        }
-        for (int i = cardCount_; i < 100; ++i) {
-            cards_[i] = nullptr;
         }
     }
     return *this;
 }
 
 void Catalog::addCard(LibraryCard* card) {
-    if (cardCount_ < 100 && card != nullptr) {
-        cards_[cardCount_++] = card;
+    if (card != nullptr) {
+        cards_.push_back(std::unique_ptr<LibraryCard>(card));
     }
 }
 
-int Catalog::getCardCount() const { return cardCount_; }
+int Catalog::getCardCount() const {
+    return cards_.size();
+}
 
 LibraryCard* Catalog::getCard(int index) const {
-    if (index >= 0 && index < cardCount_) {
-        return cards_[index];
+    if (index >= 0 && index < cards_.size()) {
+        return cards_[index].get();
     }
     return nullptr;
 }
-
 
 

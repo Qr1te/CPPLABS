@@ -164,14 +164,13 @@ void menu(ThematicCatalog& thematicCatalog, AlphabeticalCatalog& alphabeticalCat
                 cout << "Enter thematic code to search: ";
                 clearInputBuffer();
                 getline(cin, code);
-                LibraryCard* results[100];
+                std::vector<LibraryCard*> results;
                 int count = thematicCatalog.search(code, results);
                 cout << "Found " << count << " results:\n";
                 for (int i = 0; i < count; ++i) {
                     displayCard(results[i]);
                 }
-                break;
-            }
+                break;}
             case 7: {
                 string author;
                 string title;
@@ -181,7 +180,7 @@ void menu(ThematicCatalog& thematicCatalog, AlphabeticalCatalog& alphabeticalCat
                 cout << "Enter title: ";
                 getline(cin, title);
                 string query = author + title;
-                LibraryCard* results[100];
+                std::vector<LibraryCard*> results;
                 int count = alphabeticalCatalog.search(query, results);
                 cout << "Found " << count << " results:\n";
                 for (int i = 0; i < count; ++i) {
