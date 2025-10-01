@@ -29,7 +29,8 @@ Catalog& Catalog::operator=(const Catalog& other) {
 
 void Catalog::addCard(LibraryCard* card) {
     if (card != nullptr) {
-        cards_.push_back(std::unique_ptr<LibraryCard>(card));
+        cards_.push_back(std::make_unique<LibraryCard>(*card));
+        delete card;
     }
 }
 
