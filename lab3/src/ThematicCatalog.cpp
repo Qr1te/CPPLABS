@@ -1,11 +1,13 @@
 #include "../includes/ThematicCatalog.h"
 
-int ThematicCatalog::search(const std::string_view& code, LibraryCard** results, int maxResults) const {
+int ThematicCatalog::search(const std::string_view& code, std::span<LibraryCard*> results) const {
     int count = 0;
     const int totalCards = getCardCount();
 
     for (int i = 0; i < totalCards; ++i) {
-        if (count >= maxResults) break;
+        if (count >= results.size()) {
+            break;
+        }
 
         LibraryCard* card = getCard(i);
         if (card && card->getThematicCode() == code) {

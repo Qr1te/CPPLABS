@@ -165,7 +165,7 @@ void menu(ThematicCatalog& thematicCatalog, AlphabeticalCatalog& alphabeticalCat
                 clearInputBuffer();
                 getline(cin, code);
                 LibraryCard* results[100];
-                int count = thematicCatalog.search(code, results, 100);
+                int count = thematicCatalog.search(code, results);
                 cout << "Found " << count << " results:\n";
                 for (int i = 0; i < count; ++i) {
                     displayCard(results[i]);
@@ -182,7 +182,7 @@ void menu(ThematicCatalog& thematicCatalog, AlphabeticalCatalog& alphabeticalCat
                 getline(cin, title);
                 string query = author + title;
                 LibraryCard* results[100];
-                int count = alphabeticalCatalog.search(query, results, 100);
+                int count = alphabeticalCatalog.search(query, results);
                 cout << "Found " << count << " results:\n";
                 for (int i = 0; i < count; ++i) {
                     displayCard(results[i]);
