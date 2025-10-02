@@ -118,15 +118,20 @@ void menu() {
             delete shape;
             shape = nullptr;
         }
-        bool shouldBreak = false;
-        if (continueChoice == 1) {
-            shouldBreak = true;
-        } else if (continueChoice == 2) {
-            continueProgram = false;
-            shouldBreak = true;
-        } else {
-            std::cout << "Invalid choice! Please enter 1 or 2.\n";
-        }
+
+        while (true) {
+            displayContinueMenu();
+            std::cin >> continueChoice;
+
+            if (continueChoice == 1) {
+                break;
+            } else if (continueChoice == 2) {
+                continueProgram = false;
+                break;
+            } else {
+                std::cout << "Invalid choice! Please enter 1 or 2.\n";
+            }
+    }
     delete shape;
 
     std::cout << "\nThank you for using Geometric Figures Program!\n";
