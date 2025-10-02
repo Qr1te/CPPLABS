@@ -119,6 +119,8 @@ void menu() {
             shape = nullptr;
         }
 
+        displayContinueMenu();
+        std::cin >> continueChoice;
         while (continueChoice != 1 && continueChoice != 2) {
             std::cout << "Invalid choice! Please enter 1 or 2.\n";
             displayContinueMenu();
