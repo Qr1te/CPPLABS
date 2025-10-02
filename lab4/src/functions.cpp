@@ -119,19 +119,15 @@ void menu() {
             shape = nullptr;
         }
 
-        while (true) {
+        while (continueChoice != 1 && continueChoice != 2) {
+            std::cout << "Invalid choice! Please enter 1 or 2.\n";
             displayContinueMenu();
             std::cin >> continueChoice;
+        }
 
-            if (continueChoice == 1) {
-                break;
-            } else if (continueChoice == 2) {
-                continueProgram = false;
-                break;
-            } else {
-                std::cout << "Invalid choice! Please enter 1 or 2.\n";
-            }
-    }
+        if (continueChoice == 2) {
+            continueProgram = false;
+        }
     delete shape;
 
     std::cout << "\nThank you for using Geometric Figures Program!\n";
