@@ -16,12 +16,33 @@ private:
     size_t size = 0;
 
 public:
-
-
     ~Queue() {
         while (!isEmpty()) {
             pop();
         }
+    }
+
+    Queue(const Queue& other) {
+        Node* current = other.front;
+        while (current != nullptr) {
+            push(current->data);
+            current = current->next;
+        }
+    }
+
+    Queue& operator=(const Queue& other) {
+        if (this != &other) {
+            while (!isEmpty()) {
+                pop();
+            }
+
+            Node* current = other.front;
+            while (current != nullptr) {
+                push(current->data);
+                current = current->next;
+            }
+        }
+        return *this;
     }
 
     void push(const T& value) {
