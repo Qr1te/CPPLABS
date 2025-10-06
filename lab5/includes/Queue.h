@@ -37,7 +37,7 @@ public:
 
     T pop() {
         if (isEmpty()) {
-            throw std::runtime_error("Queue is empty");
+            std::cout << "Queue is empty\n";
         }
 
         Node* temp = front;
@@ -55,7 +55,7 @@ public:
 
     T peek() {
         if (isEmpty()) {
-            throw std::runtime_error("Queue is empty");
+            std::cout << "Queue is empty\n";
         }
         return front->data;
     }
