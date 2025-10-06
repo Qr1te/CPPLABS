@@ -1,7 +1,7 @@
 #include "../includes/functions.h"
 
-
-template <typename T> T getInput(const char *msg){
+template <typename T>
+T getInput(const char *msg){
     T value;
     std::cout << msg;
 
@@ -27,6 +27,10 @@ template <typename T> T getInput(const char *msg){
         }
     }
 }
+
+
+template int getInput<int>(const char *msg);
+template double getInput<double>(const char *msg);
 
 void displayMenu() {
     std::cout << "\n=== Geometric Figures Menu ===\n";
@@ -65,34 +69,34 @@ void menu() {
     while (continueProgram) {
         clearScreen();
         displayMenu();
-        std::cin >> choice;
+        choice = getInput<int>("");
 
         if (choice == 5) {
             break;
         }
+
         switch (choice) {
             case 1:
-                std::cout << "Enter radius: ";
-                param1 = getInput<double>("");
+                param1 = getInput<double>("Enter radius: ");
                 shape = new Circle(param1);
                 break;
             case 2:
-                std::cout << "Enter side: ";
-                param1 = getInput<double>("");
+                param1 = getInput<double>("Enter side: ");
                 shape = new Square(param1);
                 break;
             case 3:
-                std::cout << "Enter radius: ";
-                param1 = getInput<double>("");
+                param1 = getInput<double>("Enter radius: ");
                 shape = new Sphere(param1);
                 break;
             case 4:
-                std::cout << "Enter side: ";
-                param1 = getInput<double>("");
+                param1 = getInput<double>("Enter side: ");
                 shape = new Cube(param1);
                 break;
             default:
                 std::cout << "Invalid choice! Please try again.\n";
+                std::cin.clear();
+                while (std::cin.get() != '\n' && !std::cin.eof())
+                    ;
                 continue;
         }
 
@@ -102,7 +106,6 @@ void menu() {
             shape->print();
             figureArea = shape->area();
             std::cout << "Area: " << figureArea << std::endl;
-
 
             if (choice == 3 || choice == 4) {
                 figureVolume = shape->volume();
@@ -114,23 +117,23 @@ void menu() {
             std::cout << "\nVisualization:\n";
             shape->draw();
 
-
             delete shape;
             shape = nullptr;
         }
 
-        displayContinueMenu();
-        std::cin >> continueChoice;
-        while (continueChoice != 1 && continueChoice != 2) {
-            std::cout << "Invalid choice! Please enter 1 or 2.\n";
+        while (true) {
             displayContinueMenu();
-            std::cin >> continueChoice;
+            continueChoice = getInput<int>("");
+
+            if (continueChoice == 1 || continueChoice == 2) {
+                break;
+            }
+            std::cout << "Invalid choice! Please enter 1 or 2.\n";
         }
 
         if (continueChoice == 2) {
             continueProgram = false;
         }
-    delete shape;
+    }
 
-    std::cout << "\nThank you for using Geometric Figures Program!\n";
-}}
+}
