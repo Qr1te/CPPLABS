@@ -61,7 +61,7 @@ void menu() {
     Shape* shape = nullptr;
     int choice;
     int continueChoice;
-    double param1;
+    double side;
     double figureArea;
     double figureVolume;
     bool continueProgram = true;
@@ -77,20 +77,20 @@ void menu() {
 
         switch (choice) {
             case 1:
-                param1 = getInput<double>("Enter radius: ");
-                shape = new Circle(param1);
+                side = getInput<double>("Enter radius: ");
+                shape = new Circle(side);
                 break;
             case 2:
-                param1 = getInput<double>("Enter side: ");
-                shape = new Square(param1);
+                side = getInput<double>("Enter side: ");
+                shape = new Square(side);
                 break;
             case 3:
-                param1 = getInput<double>("Enter radius: ");
-                shape = new Sphere(param1);
+                side = getInput<double>("Enter radius: ");
+                shape = new Sphere(side);
                 break;
             case 4:
-                param1 = getInput<double>("Enter side: ");
-                shape = new Cube(param1);
+                side = getInput<double>("Enter side: ");
+                shape = new Cube(side);
                 break;
             default:
                 std::cout << "Invalid choice! Please try again.\n";
