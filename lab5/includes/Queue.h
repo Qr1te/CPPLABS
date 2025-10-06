@@ -8,15 +8,15 @@ class Queue {
 private:
     struct Node {
         T data;
-        Node* next;
-        explicit Node(const T& value): data(value), next(nullptr) {}
+        Node* next = nullptr;
+        explicit Node(const T& value): data(value) {}
     };
-    Node* front;
-    Node* rear;
-    size_t size;
+    Node* front = nullptr;
+    Node* rear = nullptr;
+    size_t size = 0;
 
 public:
-    Queue() : front(nullptr), rear(nullptr), size(0) {}
+
 
     ~Queue() {
         while (!isEmpty()) {
@@ -25,7 +25,7 @@ public:
     }
 
     void push(const T& value) {
-        Node* newNode = new Node(value);
+        auto newNode = new Node(value);
         if (isEmpty()) {
             front = rear = newNode;
         } else {
