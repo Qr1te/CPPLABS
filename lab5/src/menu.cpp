@@ -66,21 +66,15 @@ void processQueueMenu(Queue<T>& queue) {
         choice = getInput<int>("");
         clearInputBuffer();
 
-        try {
-            switch (choice) {
-                case 1: {
-                    std::cout << "Enter value to add: ";
-                    if constexpr (std::is_same<T, std::string>::value) {
-                        std::string input;
-                        std::getline(std::cin, input);
-                        value = input;
-                    } else {
-                        value = getInput<T>("");
-                        clearInputBuffer();
-                    }
-                    queue.push(value);
-                    std::cout << "Element '" << value << "' added to queue\n";
-                    break;
+
+        switch (choice) {
+            case 1: {
+                std::cout << "Enter value to add: ";
+                value = getInput<T>("");
+                clearInputBuffer();
+                queue.push(value);
+                std::cout << "Element '" << value << "' added to queue\n";
+                break;
                 }
                 case 2: {
                     if (queue.isEmpty()) {
@@ -114,11 +108,9 @@ void processQueueMenu(Queue<T>& queue) {
                 default:
                     std::cout << "Invalid choice. Try again.\n";
             }
-        } catch (const std::exception& e) {
-            std::cout << "Error: " << e.what() << "\n";
         }
     }
-}
+
 
 void menu() {
     int typeChoice;
