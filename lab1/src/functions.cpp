@@ -33,7 +33,6 @@ void setNumber(int *number) {
 }
 
 void menu() {
-
     char reset = 'y';
     do {
         int row1;
