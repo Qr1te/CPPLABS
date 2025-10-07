@@ -1,0 +1,26 @@
+#ifndef LAB1_MATRIX_H
+#define LAB1_MATRIX_H
+
+#include "functions.h"
+#include <iostream>
+#include <stdexcept>
+
+class Matrix {
+private:
+    int rows;
+    int cols;
+    int **data;
+
+public:
+    Matrix(int r, int c);
+    Matrix(const Matrix &other);
+    Matrix &operator=(const Matrix &other);
+    ~Matrix();
+    void fill() const;
+    Matrix add(const Matrix &other) const;
+    Matrix multiply(const Matrix &other) const;
+    void print() const;
+};
+
+
+#endif//LAB1_MATRIX_H
