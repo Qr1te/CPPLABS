@@ -3,8 +3,8 @@ project(lab1)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(lab1 main.cpp
-        Matrix.cpp
-        Matrix.h
-        functions.cpp
-        functions.h)
+add_executable(lab1 src/main.cpp
+        src/Matrix.cpp
+        includes/Matrix.h
+        src/functions.cpp
+        includes/functions.h)

@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "../includes/functions.h"
 
 void setNumber(int *number) {
     bool isInvalid = false;
@@ -36,7 +36,10 @@ void menu() {
 
     char reset = 'y';
     do {
-        int row1, col1, row2, col2;
+        int row1;
+        int col1;
+        int row2;
+        int col2;
         int choice;
         std::cout << "Enter size of the first matrix" << std::endl;
         setNumber(&row1);
