@@ -111,11 +111,5 @@ void Menu::run() {
         catch (const StringException& e) {
             printErrorRed("Error: " + std::string(e.what()));
         }
-        catch (const std::exception& e) {
-            printErrorRed("Standard exception: " + std::string(e.what()));
-        }
-        catch (...) {
-            printErrorRed("Unknown error occurred");
-        }
     }
 }
