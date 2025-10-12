@@ -5,7 +5,7 @@
 #include <stdexcept>
 
 class StringException : public std::exception {
-protected:
+private:
     std::string message;
 public:
     explicit StringException(const std::string& msg);

@@ -67,7 +67,7 @@ String& String::operator+=(const String& other) {
     }
 
     try {
-        char* newData = new char[newLength + 1];
+        auto newData = new char[newLength + 1];
         if (data != nullptr) {
             std::strcpy(newData, data);
         } else {
@@ -120,24 +120,4 @@ String String::substring(size_t start, size_t len) const {
     }
 }
 
-std::ostream& operator<<(std::ostream& os, const String& str) {
-    os << (str.data ? str.data : "");
-    return os;
-}
 
-std::istream& operator>>(std::istream& is, String& str) {
-    std::string buffer;
-    is >> buffer;
-    if (buffer.length() > String::MAX_SIZE) {
-        throw OverflowException("Input string length exceeds maximum size");
-    }
-    str.freeMemory();
-    str.length = buffer.length();
-    try {
-        str.data = new char[str.length + 1];
-        std::strcpy(str.data, buffer.c_str());
-    } catch (const std::bad_alloc&) {
-        throw MemoryAllocationException("Failed to allocate memory in input operator");
-    }
-    return is;
-}
