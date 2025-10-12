@@ -3,7 +3,7 @@
 
 
 void printErrorRed(const std::string& message) {
-    std::cerr << "\033[1;31m" << message << "\033[0m" << std::endl;
+    std::cerr << "\o{33}[1;31m" << message << "\o{33}[0m" << std::endl;
 }
 
 void Menu::showMenu() {
@@ -39,12 +39,7 @@ void Menu::processString(String& str, size_t index, size_t substrStart, size_t s
     catch (const StringException& e) {
         printErrorRed("General string error: " + std::string(e.what()));
     }
-    catch (const std::exception& e) {
-        printErrorRed("Standard exception: " + std::string(e.what()));
-    }
-    catch (...) {
-        printErrorRed("Unknown error occurred");
-    }
+
 }
 
 void Menu::run() {
