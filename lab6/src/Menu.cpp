@@ -39,7 +39,6 @@ void Menu::processString(String& str, size_t index, size_t substrStart, size_t s
     catch (const StringException& e) {
         printErrorRed("General string error: " + std::string(e.what()));
     }
-
 }
 
 void Menu::run() {
