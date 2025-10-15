@@ -4,11 +4,11 @@
 #include <iostream>
 
 struct MetalItem{
-    int id;
-    std::string name;
-    double cost;
-    int count;
-    MetalItem(): id(0), name(" "), cost(0),count(0){};
+    int id = 0;
+    std::string name = " ";
+    double cost = 0;
+    int count = 0;
+
 };
 
 #endif//LAB7_METALITEM_H

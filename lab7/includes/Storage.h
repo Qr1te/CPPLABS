@@ -15,7 +15,7 @@ private:
     bool readRecord(long pos, MetalItem& item);
     void writeRecord(long pos, const MetalItem& item);
 public:
-    Storage(const std::string& fname = "storage.txt");
+    explicit Storage(const std::string& fname = "storage.txt");
     ~Storage();
     void addItem();
     void deleteItem(int id);
