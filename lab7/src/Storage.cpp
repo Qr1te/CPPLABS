@@ -111,7 +111,7 @@ long Storage::findMetalItemPosition(int id) {
         }
         pos = file.tellg();
     }
-    return -1;
+    return -1; // Not found
 }
 
 Storage::Storage(const std::string& fname ) : fileName(fname) {
