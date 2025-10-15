@@ -100,30 +100,24 @@ long Storage::findMetalItemPosition(int id) {
     file.seekg(0, std::ios::beg);
     std::string line;
     long pos = 0;
-
     while (std::getline(file, line)) {
         std::stringstream ss(line);
         std::string field;
 
-        if (std::getline(ss, field, '|') && !field.empty()) {
-            bool isNumeric = true;
-            for (char c : field) {
-                if (!std::isdigit(c)) {
-                    isNumeric = false;
-                    break;
-                }
-            }
-            if (isNumeric) {
-                int recordId = std::stoi(field);
-                if (recordId == id) {
-                    return pos;
-                }
-            }
+        if (std::getline(ss, field, '|'); field.empty()) {
+            pos = file.tellg();
+            continue;
         }
+        int recordId = std::stoi(field);
+        if (recordId == id) {
+            return pos;
+        }
+
         pos = file.tellg();
     }
     return -1;
 }
+
 
 Storage::Storage(const std::string& fname ) : fileName(fname) {
     file.open(fileName, std::ios::in | std::ios::out);
