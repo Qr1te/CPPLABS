@@ -92,8 +92,7 @@ void runProgram() {
                     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                     break;
                 }
-                TreeNode<T>* found = alg.search(tree.getRoot(), value);
-                if (found) {
+                if (TreeNode<T>* found = alg.search(tree.getRoot(), value)) {
                     std::cout << "Value " << value << " found in the tree.\n";
                 } else {
                     std::cout << "Value " << value << " not found in the tree.\n";

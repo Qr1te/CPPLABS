@@ -12,7 +12,7 @@ template <typename T>
 class Algorithm {
 public:
 
-    void inorderTraversal(TreeNode<T>* root) {
+    void inorderTraversal (TreeNode<T>* root) const {
         if (!root) return;
         std::stack<TreeNode<T>*> stk;
         TreeNode<T>* current = root;
@@ -29,7 +29,7 @@ public:
         std::cout << std::endl;
     }
 
-    void levelOrderTraversal(TreeNode<T>* root) {
+    void levelOrderTraversal(TreeNode<T>* root) const {
         if (!root) return;
         std::queue<TreeNode<T>*> q;
         q.push(root);

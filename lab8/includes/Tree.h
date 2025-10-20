@@ -1,8 +1,9 @@
 #ifndef LAB8_TREE_H
 #define LAB8_TREE_H
 
-#include <iostream>
 #include "TreeNode.h"
+#include <functional>
+#include <iostream>
 
 
 template <typename T>
@@ -11,7 +12,7 @@ class Iterator;
 template <typename T>
 class Tree {
 private:
-    TreeNode<T>* root;
+    TreeNode<T>* root = nullptr;
     void deleteNode(TreeNode<T>* node){
         if (node) {
             deleteNode(node->left);
@@ -19,11 +20,35 @@ private:
             delete node;
         }
     }
+
+    TreeNode<T>* copyTree(TreeNode<T>* node) {
+        if (!node) return nullptr;
+        auto* newNode = new TreeNode<T>(node->value);
+        newNode->left = copyTree(node->left);
+        newNode->right = copyTree(node->right);
+        return newNode;
+    }
+
 public:
-    Tree():root(nullptr){}
+    Tree()= default;
     ~Tree(){ deleteNode(root);}
 
-    void insert(const T& value) {
+    Tree(const Tree& other) : root(nullptr) {
+        if (other.root) {
+            root = copyTree(other.root);
+        }
+    }
+
+    Tree& operator=(const Tree& other) {
+        if (this != &other) {
+
+            Tree temp(other);
+            std::swap(root, temp.root);
+        }
+        return *this;
+    }
+
+        void insert(const T& value) {
         if (!root) {
             root = new TreeNode<T>(value);
             return;
