@@ -31,9 +31,9 @@ private:
 
 public:
     Tree()= default;
-    ~Tree(){ deleteNode(root);}
+    ~Tree(){ deleteNode(root); }
 
-    Tree(const Tree& other) : root(nullptr) {
+    Tree(const Tree& other) {
         if (other.root) {
             root = copyTree(other.root);
         }
